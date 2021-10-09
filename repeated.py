@@ -5,27 +5,21 @@ parser = argparse.ArgumentParser()
 
 
 # add arguments here:
-parser.add_argument('x', type=int, help='the base')
-parser.add_argument('y', type=int, help='the exponent')
-parser.add_argument('-v', '--verbosity', action='count', default=0)
+parser.add_argument('path', help='the base')
+parser.add_argument('-a', '--alphabetic', action='store_true',
+                        help='alphabetic order while sorting')
+parser.add_argument('-o', '--output',
+                        help='place the output there by <name>.txt')
+parser.add_argument('-r', '--reverse', action='store_true',
+                        help ='reverse order while sorting')
 
 
-# get some data from command-line with parse_arge() method
+# get data from command-line with parse_arge() method
 args = parser.parse_args()
-answer = args.x**args.y
-if args.verbosity >= 2:
-    print('the square of %d equals %d' %(args.x, answer))
-elif args.verbosity >= 1:
-    print('%d^%d = %d' %(args.x, args.y, answer))
-else:
-    print(answer)
-
-
-'''
-# Get text-file path from USER
-print('Enter Absolute Path')
-print('[if text is in current path, jusu enter the name]')
-filePath = input('file path: ')
+filePath = args.path
+isAlpha = args.alphabetic
+isReverse = args.reverse
+output = args.output
 
 with open("junks.txt") as f:
     content = f.readlines()
@@ -69,6 +63,6 @@ with open(filePath) as f:
             addKeys(word)
 
 print()
+keyWords = list()
 for w in words:
     print(w, words[w])
-'''
