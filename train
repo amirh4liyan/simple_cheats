@@ -1,0 +1,20 @@
+i -> insert
+o,O -> new one line
+x,X -> delete one char
+J -> join 
+r -> replace one char
+a -> append
+u -> undo
+d -> delete (dd, dw, ..)
+y -> yank/copy (yy, yw, ..)
+G -> go to line (10G, 1G, G)
+p,P -> paste
+/X -> search for X (n, N)
+$ -> end of line
+^ -> start of the line
+. -> repeat
+
+hi there I'm arya #TODO
+this is the second line #TODO
+and the last line #TODO
+another line #TODO 
