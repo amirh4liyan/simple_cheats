@@ -77,18 +77,16 @@ with open(filePath) as f:
             addKeys(word)
 
 print()
-keyWords = list()
+
+keyWords = []
+valueWords = []
 keyWords.append(list(wordsDict.keys())[0])
-valueWords = list()
-valueWords.append(list(wordsDict.values())[0])
+valueWords.append(wordsDict[keyWords[0]])
 for key in wordsDict:
-    if wordsDict[key] >= valueWords[0]:
-        valueWords.insert(0, wordsDict[key])
-        keyWords.insert(0, key)
-    elif wordsDict[key] < valueWords[0]:
-        for i in range(1, len(valueWords)+1):
-            if wordsDict[key] >= valueWords[i]:
-                valueWords.insert(i, wordsDict[key])
-                keyWords.insert(i, key)
-for i in range(keyWords):
+    for i in range(len(valueWords)):
+        if wordsDict[key] >= valueWords[i]:
+            valueWords.insert(i, wordsDict[key])
+            keyWords.insert(i, key)
+
+for i in range(len(keyWords)):
     print(keyWords[i], valueWords[i])
