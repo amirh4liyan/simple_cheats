@@ -17,35 +17,34 @@ parser.add_argument('-r', '--reverse', action='store_true',
 
 
 # get data from command-line with parse_arge() method
-def init()
-    args = parser.parse_args()
-    filePath = args.path
-    isAlpha = args.alphabetic
-    isReverse = args.reverse
-    outputName = args.output
+args = parser.parse_args()
+filePath = args.path
+isAlpha = args.alphabetic
+isReverse = args.reverse
+outputName = args.output
 
-    lLength = 3
-    rLength = 16
-    if args.length:
-        l = args.length[:args.length.index(':')]
-        if l:
-            lLength = int(args.length[:args.length.index(':')])
+lLength = 3
+rLength = 16
+if args.length:
+    l = args.length[:args.length.index(':')]
+    if l:
+        lLength = int(args.length[:args.length.index(':')])
 
-        r = args.length[args.length.index(':')+1:]
-        if r:
-            rLength = int(args.length[args.length.index(':')+1:])
+    r = args.length[args.length.index(':')+1:]
+    if r:
+        rLength = int(args.length[args.length.index(':')+1:])
 
-    with open('configs.txt') as f:
-        data = f.readlines()
+with open('configs.txt') as f:
+    data = f.readlines()
 
-    configs = []
-    for j in data:
-        configs.append(j.strip('\n'))
+configs = []
+for j in data:
+    configs.append(j.strip('\n'))
 
-    strips, spaces, nothing = configs
-    strips = strips[6:]
-    spaces = spaces[6:]
-    nothing = nothing[8:]
+strips, spaces, nothing = configs
+strips = strips[6:]
+spaces = spaces[6:]
+nothing = nothing[8:]
 
 def clearLine(strLine):
     for case in nothing:
@@ -63,7 +62,6 @@ def addKeys(keyWord):
         else:
             wordsDict[keyWord] += 1
 
-init()
 
 wordsDict = dict()
 with open(filePath) as f:
@@ -79,9 +77,10 @@ with open(filePath) as f:
             addKeys(word)
 
 print()
-'''
-keyWords = list(wordsDict.keys()[0])
-valueWords = list(wordsDict.values()[0])
+keyWords = list()
+keyWords.append(list(wordsDict.keys())[0])
+valueWords = list()
+valueWords.append(list(wordsDict.values())[0])
 for key in wordsDict:
     if wordsDict[key] >= valueWords[0]:
         valueWords.insert(0, wordsDict[key])
@@ -91,7 +90,5 @@ for key in wordsDict:
             if wordsDict[key] >= valueWords[i]:
                 valueWords.insert(i, wordsDict[key])
                 keyWords.insert(i, key)
-print(keyWords)
-print(valueWords)
-'''
-print(wordsDict)
+for i in range(keyWords):
+    print(keyWords[i], valueWords[i])
