@@ -86,7 +86,7 @@ def compareAlpha(x, y):
     elif answer == x:
         return False
 
-def swap():
+def swap(i):
     keyWords[i], keyWords[i-1] = keyWords[i-1], keyWords[i]
     valueWords[i], valueWords[i-1] = valueWords[i-1], valueWords[i]
 
@@ -96,14 +96,14 @@ def sortByAlpha():
         for i in range(a-1, 0, -1):
             # if second was closer, return True, else will return False
             if compareAlpha(keyWords[i-1], keyWords[i]):
-                swap()
+                swap(i)
 
 def sortByRepeat():
     a = len(valueWords)
     for j in range(a):
         for i in range(a-1, 0, -1):
             if valueWords[i] > valueWords[i-1]:
-                swap()
+                swap(i)
 
 wordsDict = dict()
 with open(filePath) as f:
@@ -118,7 +118,6 @@ with open(filePath) as f:
         for word in line:
             addKeys(word)
             
-
 keyWords = list(wordsDict.keys())
 valueWords = list(wordsDict.values())
 
@@ -136,4 +135,4 @@ for i in range(len(valueWords)):
     key = keyWords[i]
     val = valueWords[i]
     padding = NI - len(key)
-    print('%s' + padding*' ' + '%d' %(key, val))
+    print('%s'%key + padding*' ' + '%d'%val)
