@@ -62,6 +62,44 @@ def addKeys(keyWord):
         else:
             wordsDict[keyWord] += 1
 
+def sortByRepeat():
+    a = len(valueWords)
+    for j in range(a):
+        for i in range(a-1, 0, -1):
+            if valueWords[i] > valueWords[i-1]:
+                valueWords[i-1], valueWords[i] = valueWords[i], valueWords[i-1]
+                keyWords[i-1], keyWords[i] = keyWords[i], keyWords[i-1]
+
+def compareAlpha(x, y):
+    if len(x) > len(y):
+        x, y = y, x
+    answer = x
+    for i in range(len(x)):
+        ordX = ord(x[i])
+        ordY = ord(y[i])
+        if ordX == ordY:
+            continue
+        elif ordX > ordY:
+            answer = y
+            break
+        elif ordX < ordY:
+            break
+    if answer == y:
+        return True
+    elif answer == x:
+        return False
+
+
+def sortByAlpha():
+    a = len(keyWords)
+    for j in range(a):
+        for i in range(a-1, 0, -1):
+            print(keyWords)
+            print('compare: ', keyWords[i-1], 'with', keyWords[i])
+            if compareAlpha(keyWords[i-1], keyWords[i]):
+                keyWords[i], keyWords[i-1] = keyWords[i-1], keyWords[i]
+                valueWords[i], valueWords[i-1] = valueWords[i-1], valueWords[i]
+
 
 wordsDict = dict()
 with open(filePath) as f:
@@ -76,17 +114,19 @@ with open(filePath) as f:
         for word in line:
             addKeys(word)
 
+keyWords = list(wordsDict.keys())
+valueWords = list(wordsDict.values())
+
 print()
 
-keyWords = []
-valueWords = []
-keyWords.append(list(wordsDict.keys())[0])
-valueWords.append(wordsDict[keyWords[0]])
-for key in wordsDict:
-    for i in range(len(valueWords)):
-        if wordsDict[key] >= valueWords[i]:
-            valueWords.insert(i, wordsDict[key])
-            keyWords.insert(i, key)
+if isAlpha:
+    sortByAlpha()
+else:
+    sortByRepeat()
+if isReverse:
+    keyWords.reverse()
+    valueWords.reverse()
 
-for i in range(len(keyWords)):
+
+for i in range(len(valueWords)):
     print(keyWords[i], valueWords[i])
