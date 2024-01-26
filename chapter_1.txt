@@ -1,52 +1,13 @@
-Our definition of a known word is a word that starts with a capital letter
-But this definition has an error and causes some words to be considered wrongly defined
+The program receives a number like N
 
-While they may have started with a capital letter due to the fact that they are at the beginning of the sentence, and they are not necessarily defined words.
+Since we need factorial calculation to calculate this expression
 
-Therefore, we must use methods to reduce the error and gain the maximum possible accuracy
+Must be from 0! up to (N-1)! calculate
 
-In this way, we first consider an array of exception words (words that may come at the beginning of the sentence and therefore start with a capital letter while they aren't considered as defined word)
+You can use recursive function or normal function to calculate factorials
 
-If the word entered by the user is among the words in this array, that word is stored in an array called "block".
+But for the program to be dynamic, looking from bottom to top, we use the array and from 0! We start and get help from the previous sentence to calculate the next sentence
 
-(Finally, when printing words in capital letters, if there is a word in the "block" array, the program ignores that word and does not print it)
+For example, to calculate 4! From the result of 3! We will take advantage of what we calculated before and multiply it by 4 to 4! achieve
 
-Then, if the word starting with a capital letter was not in this array, it depends on whether that word is located at the beginning of the sentence or not at the beginning of the sentence.
-
-If it is located in a place other than the beginning of the sentence, that word is definitely considered defined and stored in an array called final.
-
-And if it is located at the beginning of the sentence, it becomes unclear for us whether the word is really defined or because it is the beginning of the sentence, it starts with a capital letter, so we store that word in the temp array.
-
-Then we scroll once on the temp array and if the word is not in the final part (that is, there was no other place in the text where that word started with a capital letter other than the beginning of the sentence), we add that word to the block array so that the program when printing defined words; Ignore that word too
-
-Finally, words that passed these filters and were not included in the block array are printed
-
-Handwriting Functions:
-
-A number of functions have also been added to the program for easy and clean work
-
-strlen function,
-It is a function that receives a string word and returns its length
-
-strip function
-It is a function that receives a string word and removes non-English characters from it, such as .,:-=
-
-The idea of this function is inspired by ready-made Python functions
-
-function isUpper,
-It receives the character and checks whether it is among the characters A-Z or not
-
-isLower function,
-It receives the character and checks whether it is among the a-z characters or not
-
-isAlphabet function,
-It receives the character and checks whether it is at least a small or an uppercase English letter
-
-haveDot function,
-This is to check whether we have reached the end of the sentence or not
-
-isMember and isExclusion functions,
-These functions are written to check the existence of the word in the array
-
-iaExclusion
-It is specifically written to check whether an array member is an exception or not
+Finally, use the for loop to calculate the solution of the sum of each sentence in the expansion of e
